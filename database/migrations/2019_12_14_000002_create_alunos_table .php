@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('cpf');
             $table->text('email');
             $table->string('dt_nascimento');
+            $table->unsignedBigInteger('id_instrutor');
+            $table->foreign('id_instrutor')->references('id')->on('instrutores')->onDelete('cascade');
             $table->timestamps();
         });
     }
