@@ -16,9 +16,14 @@ class CreateAgendaTable extends Migration
         Schema::create('agendas', function (Blueprint $table) {
             $table->bigIncrements('id_agenda');
             $table->date('data');
-            $table->time('hora');
             $table->unsignedBigInteger('id_aluno');
+            $table->unsignedBigInteger('id_horario');
+            $table->unsignedBigInteger('id_status');
             $table->foreign('id_aluno')->references('id_aluno')->on('alunos')->onDelete('cascade');
+            $table->foreign('id_horario')->references('id_horario')->on('horarios')->onDelete('cascade');
+            $table->foreign('id_status')->references('id_status')->on('status')->onDelete('cascade');
+
+
             $table->timestamps();
         });
     }
