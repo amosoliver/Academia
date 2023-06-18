@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('instrutores', function (Blueprint $table) {
-            $table->bigIncrements('id_instrutor');
-            $table->string('nome');
-            $table->string('cpf');
-            $table->text('email');
-            $table->string('dt_nascimento');
+        Schema::create('pacotes', function (Blueprint $table) {
+            $table->bigIncrements('id_pacote');
+            $table->string('nm_pacote');
+            $table->string('ds_pacote');
+            $table->integer('qt_aulas');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('instrutores');
+        Schema::dropIfExists('pacotes');
     }
 };
