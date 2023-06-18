@@ -12,13 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('alunos', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id_aluno');
             $table->string('nome');
             $table->string('cpf');
             $table->text('email');
             $table->string('dt_nascimento');
             $table->unsignedBigInteger('id_instrutor');
-            $table->foreign('id_instrutor')->references('id')->on('instrutores')->onDelete('cascade');
+            $table->foreign('id_instrutor')->references('id_instrutor')->on('instrutors')->onDelete('cascade');
+            $table->unsignedBigInteger('id_pacote');
+            $table->foreign('id_pacote')->references('id_pacote')->on('pacotes')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('personal_access_tokens');
+        Schema::dropIfExists('alunos');
     }
 };

@@ -14,11 +14,11 @@ class CreateAgendaTable extends Migration
     public function up()
     {
         Schema::create('agendas', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id_agenda');
             $table->date('data');
             $table->time('hora');
             $table->unsignedBigInteger('id_aluno');
-            $table->foreign('id_aluno')->references('id')->on('alunos')->onDelete('cascade');
+            $table->foreign('id_aluno')->references('id_aluno')->on('alunos')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateAgendaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agenda');
+        Schema::dropIfExists('agendas');
     }
 }
