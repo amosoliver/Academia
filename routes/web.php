@@ -36,5 +36,7 @@ Route::patch('horario/{id_percentual}',  [\App\Http\Controllers\HorarioControlle
     ->name('horario.edit');
 Route::patch('horario/{id_percentual}',  [\App\Http\Controllers\HorarioController::class, 'update'])
     ->name('horario.update');
+    Route::post('horario',  [\App\Http\Controllers\HorarioController::class, 'store'])
+    ->name('horario.store');
 
 

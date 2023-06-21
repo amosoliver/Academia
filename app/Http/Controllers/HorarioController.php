@@ -14,12 +14,12 @@ class HorarioController extends Controller
     ) {
     }
 
-    public function index(): Response
+    public function index()
     {
         $v['title'] = 'horario de cumprimento do servidor';
 
         $horarios = $this->horario;
-                $v['horarios'] = $horarios->get();
+        $v['horarios'] = $horarios->get();
         if (request()->filled('edit')) {
             $v['edithorario'] = $this->horario->find(request('edit'));
         }
@@ -35,15 +35,13 @@ class HorarioController extends Controller
 
         try {
             if ($horario->save()) {
-                flash('horario de cumprimento do servidor adicionado.')->success();
-
-                return redirect()->route('horario.index');
+                return redirect()->route('horario.index')->with('success', 'horario registrado com sucesso!');
             }
         } catch (\Exception $ex) {
-            flashException($ex);
+            return redirect()->back()->with('error', 'Ocorreu um erro ao registrar o horario: ' . $ex->getMessage());
         }
 
-        return redirect()->back()->withInput();
+        return redirect()->back()->with('error', 'Ocorreu um erro ao registrar o horario.');
     }
 
     public function update($id)
