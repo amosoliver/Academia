@@ -13,17 +13,10 @@ class Instrutor extends Model
 
     protected $primaryKey = 'id_instrutor';
 
-    protected $fillable = [
-        'id_instrutor',
-        'nome'
-    ];
-
-    public function selectList($id_instrutor)
+    public function selectList()
     {
         $instrutores = $this->orderBy('nome')
-            ->where('id_instrutor', $id_instrutor)
             ->get();
-
         $arr = [];
         foreach ($instrutores as $instrutor) {
             $arr[$instrutor->id_instrutor] = $instrutor->nome;
