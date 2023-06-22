@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Horario extends Model
 {
-    use HasFactory;
+    protected $primaryKey = 'id_horario';
 }
