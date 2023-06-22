@@ -27,7 +27,7 @@ Route::post('instrutor/store' , [\App\Http\Controllers\InstrutorController::clas
     ->name('instrutor.store');
 Route::patch('instrutor/{id_instrutor}/update' , [\App\Http\Controllers\InstrutorController::class, 'update'])
     ->name('instrutor.update');
-    Route::delete('/instrutor/{id_instrutor}', [\App\Http\Controllers\InstrutorController::class,'destroy'])
+    Route::delete('instrutor/{id_instrutor}', [\App\Http\Controllers\InstrutorController::class,'destroy'])
     ->name('instrutor.destroy');
 
     Route::get('horario',  [\App\Http\Controllers\HorarioController::class, 'index'])
@@ -38,5 +38,7 @@ Route::patch('horario/{id_percentual}',  [\App\Http\Controllers\HorarioControlle
     ->name('horario.update');
     Route::post('horario',  [\App\Http\Controllers\HorarioController::class, 'store'])
     ->name('horario.store');
+    Route::delete('horario/{id_horario}', [\App\Http\Controllers\HorarioController::class, 'destroy'])
+    ->name('horario.destroy');
 
 

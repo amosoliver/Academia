@@ -30,7 +30,7 @@ class HorarioController extends Controller
     public function store(Request $req)
     {
         $horario = $this->horario->newInstance();
-        $horario->hora_fim = $req->input('hora_inicio');
+        $horario->hora_inicio = $req->input('hora_inicio');
         $horario->hora_fim = $req->input('hora_fim');
 
         try {
@@ -44,7 +44,7 @@ class HorarioController extends Controller
         return redirect()->back()->with('error', 'Ocorreu um erro ao registrar o horario.');
     }
 
-    public function update($id)
+    public function update(Request $req, $id)
     {
         $horario = $this->horario->find($id);
         $horario->hora_fim = $req->input('hora_inicio');
@@ -52,15 +52,15 @@ class HorarioController extends Controller
 
         try {
             if ($horario->save()) {
-                flash('Alterações salvas.')->success();
+                return redirect()->route('horario.index')->with('success', 'horario editado com sucesso!');
             }
         } catch (\Exception $ex) {
-            flashException($ex);
-            return redirect()->back()->withInput();
+            return redirect()->back()->with('error', 'Ocorreu um erro ao editar o horario: ' . $ex->getMessage());
         }
 
-        return redirect()->route('horario.index');
+        return redirect()->back()->with('error', 'Ocorreu um erro ao editar o horario.');
     }
+
 
     public function destroy($id)
     {
@@ -68,13 +68,12 @@ class HorarioController extends Controller
 
         try {
             if ($horario->delete()) {
-                flash('horario de cumprimento do servidor excluído.')->success();
+                return redirect()->route('horario.index')->with('success', 'horario excluido com sucesso!');
             }
         } catch (\Exception $ex) {
-            flashException($ex);
+            return redirect()->back()->with('error', 'Ocorreu um erro ao excluir o horario: ' . $ex->getMessage());
         }
 
-        return redirect()->route('horario.index');
+        return redirect()->back()->with('error', 'Ocorreu um erro ao excluir o horario.');
     }
-
 }

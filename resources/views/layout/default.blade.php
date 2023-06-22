@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/jquery.inputmask.bundle.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.cpf').inputmask('999.999.999-99');
@@ -20,9 +20,6 @@
             $('.valor').inputmask('R$ 999.999,99');
         });
         </script>
-
-
-
 </head>
 <body>
     <main>
