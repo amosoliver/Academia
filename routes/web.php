@@ -32,14 +32,29 @@ Route::delete('instrutor/{id_instrutor}', [\App\Http\Controllers\InstrutorContro
 
 Route::get('horario', [\App\Http\Controllers\HorarioController::class, 'index'])
     ->name('horario.index');
-Route::patch('horario/{id_percentual}', [\App\Http\Controllers\HorarioController::class, 'edit'])
+Route::patch('horario/{id_horario}', [\App\Http\Controllers\HorarioController::class, 'edit'])
     ->name('horario.edit');
-Route::patch('horario/{id_percentual}', [\App\Http\Controllers\HorarioController::class, 'update'])
+Route::patch('horario/{id_horario}', [\App\Http\Controllers\HorarioController::class, 'update'])
     ->name('horario.update');
 Route::post('horario', [\App\Http\Controllers\HorarioController::class, 'store'])
     ->name('horario.store');
 Route::delete('horario/{id_horario}', [\App\Http\Controllers\HorarioController::class, 'destroy'])
     ->name('horario.destroy');
+
+
+Route::get('pacote', [\App\Http\Controllers\PacoteController::class, 'index'])
+->name('pacote.index');
+Route::patch('pacote/{id_pacote}', [\App\Http\Controllers\PacoteController::class, 'edit'])
+->name('pacote.edit');
+Route::patch('pacote/{id_pacote}', [\App\Http\Controllers\PacoteController::class, 'update'])
+->name('pacote.update');
+Route::post('pacote', [\App\Http\Controllers\PacoteController::class, 'store'])
+->name('pacote.store');
+Route::delete('pacote/{id_pacote}', [\App\Http\Controllers\PacoteController::class, 'destroy'])
+->name('pacote.destroy');
+
+
+
 
 Route::get('aluno', [\App\Http\Controllers\AlunoController::class, 'index'])
     ->name('aluno.index');
