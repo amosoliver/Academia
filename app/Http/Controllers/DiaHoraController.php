@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
 class DiaHoraController extends Controller
 {
     public function __construct(
-        private DiaHora  $diaHora,
+        private DiaHora $diaHora,
     ) {
     }
 
