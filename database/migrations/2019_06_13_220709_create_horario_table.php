@@ -13,8 +13,8 @@ class CreateHorarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('horarios', function (Blueprint $table) {
-            $table->bigIncrements('id_horario');
+        Schema::create('horas', function (Blueprint $table) {
+            $table->bigIncrements('id_hora');
             $table->time('hora_inicio');
             $table->time('hora_fim');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateHorarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('horarios');
+        Schema::dropIfExists('horas');
     }
 }
