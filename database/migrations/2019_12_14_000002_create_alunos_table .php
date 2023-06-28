@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('cpf');
             $table->text('email');
             $table->string('dt_nascimento');
-            $table->string('dia_semana');
-            $table->float('mensalidade');
             $table->unsignedBigInteger('id_instrutor');
             $table->foreign('id_instrutor')->references('id_instrutor')->on('instrutors')->onDelete('cascade');
             $table->timestamps();
