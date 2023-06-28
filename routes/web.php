@@ -41,6 +41,17 @@ Route::post('horario', [\App\Http\Controllers\HorarioController::class, 'store']
 Route::delete('horario/{id_horario}', [\App\Http\Controllers\HorarioController::class, 'destroy'])
     ->name('horario.destroy');
 
+Route::get('diahora', [\App\Http\Controllers\DiaHoraController::class, 'index'])
+    ->name('diahora.index');
+Route::patch('diahora/{id_dia_hora}', [\App\Http\Controllers\DiaHoraController::class, 'edit'])
+    ->name('diahora.edit');
+Route::patch('diahora/{id_dia_hora}', [\App\Http\Controllers\DiaHoraController::class, 'update'])
+    ->name('diahora.update');
+Route::post('diahora', [\App\Http\Controllers\DiaHoraController::class, 'store'])
+    ->name('diahora.store');
+Route::delete('diahora/{id_dia_hora}', [\App\Http\Controllers\DiaHoraController::class, 'destroy'])
+    ->name('diahora.destroy');
+
 
 Route::get('pacote', [\App\Http\Controllers\PacoteController::class, 'index'])
 ->name('pacote.index');

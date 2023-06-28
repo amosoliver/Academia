@@ -40,16 +40,6 @@
                 {!! $errors->first('id_instrutor') !!}
             </div>
 
-            <div class="form-group">
-                {{ Form::checkbox('dias_semana[]', 'Segunda-feira', false) }} Segunda-feira<br>
-                {{ Form::checkbox('dias_semana[]', 'Terça-feira', false) }} Terça-feira<br>
-                {{ Form::checkbox('dias_semana[]', 'Quarta-feira', false) }} Quarta-feira<br>
-                {{ Form::checkbox('dias_semana[]', 'Quinta-feira', false) }} Quinta-feira<br>
-                {{ Form::checkbox('dias_semana[]', 'Sexta-feira', false) }} Sexta-feira<br>
-
-
-            </div>
-
         </div>
         <div class="box-footer mb-2 text-end">
             <br>
