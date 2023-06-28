@@ -4,13 +4,17 @@
         <div class="box mt-2">
             <div class="box-header">
                 <div class="box-title">
-                    <h1>{{$title}}</h1>
+                    <h1>{{ $title }}</h1>
                 </div>
                 <br>
             </div>
         </div>
-        {{ Form::open(['class' => 'form-horizontal','method' => 'POST', 'route' => 'aluno.store',
-        'enctype' => 'multipart/form-data']) }}
+        {{ Form::open([
+            'class' => 'form-horizontal',
+            'method' => 'POST',
+            'route' => 'aluno.store',
+            'enctype' => 'multipart/form-data',
+        ]) }}
 
         <div class="box-body">
 
@@ -35,10 +39,15 @@
                 {{ Form::select('id_instrutor', ['' => 'Selecione um instrutor'] + $instrutores, null, ['class' => 'form-select']) }}
                 {!! $errors->first('id_instrutor') !!}
             </div>
+
             <div class="form-group">
-                {{ Form::label('id_pacote', 'Pacote', ['class' => 'control-label col-md-3 col-lg-2']) }}
-                {{ Form::select('id_pacote', ['' => 'Selecione um pacote'] + $pacotes, null, ['class' => 'form-select']) }}
-                {!! $errors->first('id_pacote') !!}
+                {{ Form::checkbox('dias_semana[]', 'Segunda-feira', false) }} Segunda-feira<br>
+                {{ Form::checkbox('dias_semana[]', 'Terça-feira', false) }} Terça-feira<br>
+                {{ Form::checkbox('dias_semana[]', 'Quarta-feira', false) }} Quarta-feira<br>
+                {{ Form::checkbox('dias_semana[]', 'Quinta-feira', false) }} Quinta-feira<br>
+                {{ Form::checkbox('dias_semana[]', 'Sexta-feira', false) }} Sexta-feira<br>
+
+
             </div>
 
         </div>
@@ -49,7 +58,3 @@
         {{ Form::close() }}
     </div>
 @endsection
-
-
-
-
