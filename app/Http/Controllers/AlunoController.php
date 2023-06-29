@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Aluno;
 use App\Models\Instrutor;
-use App\Models\Pacote;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
@@ -14,7 +13,6 @@ class AlunoController extends Controller
     public function __construct(
         private Aluno $aluno,
         private Instrutor $instrutor,
-        private Pacote $pacote
     ) {
     }
 
@@ -37,40 +35,11 @@ class AlunoController extends Controller
     {
         $v['title'] = 'Cadastrar aluno';
         $v['instrutores'] = $this->instrutor->selectList();
-        $v['pacotes'] = $this->pacote->selectList();
         return response()->view('aluno.create', $v);
     }
 
     public function store(Request $req)
     {
-        $quantidadeDeDias = count($req->input('dias_semana'));
-
-        switch ($quantidadeDeDias) {
-            case 1:
-                $mensalidade = 80.00;
-
-                break;
-
-            case 2:
-                $mensalidade = 100.00;
-
-
-                break;
-
-            case 3:
-                $mensalidade = 150.00;
-                break;
-
-            case 4:
-                $mensalidade = 170.00;
-
-
-                break;
-
-            case 5:
-                $mensalidade = 200.00;
-                break;
-        }
 
         try {
             $aluno = $this->aluno->newInstance();
@@ -79,9 +48,6 @@ class AlunoController extends Controller
             $aluno->email = $req->input('email');
             $aluno->dt_nascimento = $req->input('dt_nascimento');
             $aluno->id_instrutor = $req->input('id_instrutor');
-            $aluno->dia_semana = implode(',', $req->input('dias_semana'));
-            $aluno->mensalidade = $mensalidade;
-
             if ($aluno->save()) {
                 return redirect()->route('aluno.index')->with('success', 'Aluno registrado com sucesso!');
             }
