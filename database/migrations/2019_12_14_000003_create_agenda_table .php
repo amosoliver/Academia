@@ -19,9 +19,12 @@ class CreateAgendaTable extends Migration
             $table->unsignedBigInteger('id_aluno');
             $table->unsignedBigInteger('id_dia_hora');
             $table->unsignedBigInteger('id_status');
-            $table->foreign('id_aluno')->references('id_aluno')->on('alunos')->onDelete('cascade');
-            $table->foreign('id_dia_hora')->references('id_dia_hora')->on('dias_horas')->onDelete('cascade');
-            $table->foreign('id_status')->references('id_status')->on('status')->onDelete('cascade');
+            $table->foreign('id_aluno')->references('id_aluno')->on('alunos')
+                ->onDelete('cascade');
+            $table->foreign('id_dia_hora')->references('id_dia_hora')->on('dias_horas')
+                ->onDelete('cascade');
+            $table->foreign('id_status')->references('id_status')->on('status')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
