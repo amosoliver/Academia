@@ -52,7 +52,6 @@ Route::post('diahora', [\App\Http\Controllers\DiaHoraController::class, 'store']
 Route::delete('diahora/{id_dia_hora}', [\App\Http\Controllers\DiaHoraController::class, 'destroy'])
     ->name('diahora.destroy');
 
-
 Route::get('pacote', [\App\Http\Controllers\PacoteController::class, 'index'])
 ->name('pacote.index');
 Route::patch('pacote/{id_pacote}', [\App\Http\Controllers\PacoteController::class, 'edit'])
@@ -63,9 +62,6 @@ Route::post('pacote', [\App\Http\Controllers\PacoteController::class, 'store'])
 ->name('pacote.store');
 Route::delete('pacote/{id_pacote}', [\App\Http\Controllers\PacoteController::class, 'destroy'])
 ->name('pacote.destroy');
-
-
-
 
 Route::get('aluno', [\App\Http\Controllers\AlunoController::class, 'index'])
     ->name('aluno.index');
@@ -80,3 +76,15 @@ Route::patch('aluno/{id_aluno}/update', [\App\Http\Controllers\AlunoController::
 Route::delete('aluno/{id_aluno}', [\App\Http\Controllers\AlunoController::class, 'destroy'])
     ->name('aluno.destroy');
 
+Route::get('agenda', [\App\Http\Controllers\AgendaController::class, 'index'])
+    ->name('agenda.index');
+Route::get('agenda/{id_agenda}/edit', [\App\Http\Controllers\AgendaController::class, 'edit'])
+    ->name('agenda.edit');
+Route::get('agenda/create', [\App\Http\Controllers\AgendaController::class, 'create'])
+    ->name('agenda.create');
+Route::post('agenda/store', [\App\Http\Controllers\AgendaController::class, 'store'])
+    ->name('agenda.store');
+Route::patch('agenda/{id_agenda}/update', [\App\Http\Controllers\AgendaController::class, 'update'])
+    ->name('agenda.update');
+Route::delete('agenda/{id_agenda}', [\App\Http\Controllers\AgendaController::class, 'destroy'])
+    ->name('agenda.destroy');
