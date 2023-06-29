@@ -15,8 +15,8 @@ class DiaHora extends Model
         return $this->belongsTo(Dia::class, 'id_dia');
     }
 
-    public function horario()
+    public function hora()
     {
-        return $this->belongsTo(Horario::class, 'id_horario');
+        return $this->belongsTo(Hora::class, 'id_hora');
     }
 }

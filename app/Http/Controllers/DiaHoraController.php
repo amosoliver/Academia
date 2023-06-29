@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dia;
 use App\Models\DiaHora ;
+use App\Models\Hora;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
@@ -11,17 +13,20 @@ class DiaHoraController extends Controller
 {
     public function __construct(
         private DiaHora $diaHora,
+        private Dia $dia,
+        private Hora $horario
     ) {
     }
 
     public function index()
     {
         $v['title'] = 'Dia/';
-
         $diaHoras = $this->diaHora;
         $v['diaHoras'] = $diaHoras->get();
+        $v['dias'] = $this->dia->selectList();
+        $v['horarios'] = $this->horario->selectList();
         if (request()->filled('edit')) {
-            $v['editdiaHora'] = $this->diaHora->find(request('edit'));
+            $v['editdiahora'] = $this->diaHora->find(request('edit'));
         }
 
         return response()->view('diahora.index', $v);
@@ -31,7 +36,7 @@ class DiaHoraController extends Controller
     {
         $diaHora = $this->diaHora->newInstance();
         $diaHora->id_dia = $req->input('id_dia');
-        $diaHora->id_horario = $req->input('id_horario');
+        $diaHora->id_hora = $req->input('id_hora');
 
         try {
             if ($diaHora->save()) {
@@ -48,7 +53,7 @@ class DiaHoraController extends Controller
     {
         $diaHora = $this->diaHora->find($id);
         $diaHora->id_dia = $req->input('id_dia');
-        $diaHora->id_horario = $req->input('id_horario');
+        $diaHora->id_hora = $req->input('id_hora');
 
         try {
             if ($diaHora->save()) {

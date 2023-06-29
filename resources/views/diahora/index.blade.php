@@ -21,17 +21,15 @@
         @endisset
         <div class="box-body">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        {{ Form::label('hora_inicio', 'hora_inicio', ['class' => 'control-label col-md-3 col-lg-2']) }}
-                        {{ Form::text('hora_inicio', null, ['class' => 'form-control diahora']) }}
-                    </div>
+                <div class="form-group">
+                    {{ Form::label('id_dia', 'Dia', ['class' => 'control-label col-md-3 col-lg-2']) }}
+                    {{ Form::select('id_dia', ['' => 'Selecione um dia'] + $dias, null, ['class' => 'form-select']) }}
+                    {!! $errors->first('id_dia') !!}
                 </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        {{ Form::label('hora_fim', 'hora_fim', ['class' => 'control-label col-md-3 col-lg-2']) }}
-                        {{ Form::text('hora_fim', null, ['class' => 'form-control diahora']) }}
-                    </div>
+                <div class="form-group">
+                    {{ Form::label('id_hora', 'Horario', ['class' => 'control-label col-md-3 col-lg-2']) }}
+                    {{ Form::select('id_hora', ['' => 'Selecione um horario'] + $horarios, null, ['class' => 'form-select']) }}
+                    {!! $errors->first('id_hora') !!}
                 </div>
             </div>
         </div>
@@ -48,15 +46,18 @@
             <table class="table datatable table-bordered table-hover table-striped">
                 <thead>
                     <tr>
-                        <th>Hora Inicio</th>
-                        <th>Hora Fim</th>
+                        <th>Dia</th>
+                        <th>Inicio</th>
+                        <th>Fim</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($diaHoras as $diahora)
                         <tr>
-                            <td>{{ $diahora->hora_inicio }}</td>
-                            <td>{{ $diahora->hora_fim }}</td>
+                            <td>{{ $diahora->dia->ds_dia }}</td>
+                            <td>{{ $diahora->hora->hora_inicio}}</td>
+                            <td>{{ $diahora->hora->hora_fim}}</td>
+
                             <td>
                                 <a href="?edit={{ $diahora->id_dia_hora }}" title="Editar diahora"
                                     class="btn btn-xs btn-primary">EDITAR</a>
@@ -64,7 +65,7 @@
                             <td>
                                 @if ($diahora)
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['diahora.destroy', $diahora->id_dia_hora], 'style' => 'display:inline']) }}
-                                        <button type="submit" title="Excluir percentual" class="btn btn-danger btn-confirm btn-xs">EXCLUIR</button>
+                                        <button type="submit" title="Excluir diahora" class="btn btn-danger btn-confirm btn-xs">EXCLUIR</button>
                                     {{ Form::close() }}
                                 @endif
                             </td>

@@ -30,16 +30,16 @@ Route::patch('instrutor/{id_instrutor}/update', [\App\Http\Controllers\Instrutor
 Route::delete('instrutor/{id_instrutor}', [\App\Http\Controllers\InstrutorController::class, 'destroy'])
     ->name('instrutor.destroy');
 
-Route::get('horario', [\App\Http\Controllers\HorarioController::class, 'index'])
-    ->name('horario.index');
-Route::patch('horario/{id_horario}', [\App\Http\Controllers\HorarioController::class, 'edit'])
-    ->name('horario.edit');
-Route::patch('horario/{id_horario}', [\App\Http\Controllers\HorarioController::class, 'update'])
-    ->name('horario.update');
-Route::post('horario', [\App\Http\Controllers\HorarioController::class, 'store'])
-    ->name('horario.store');
-Route::delete('horario/{id_horario}', [\App\Http\Controllers\HorarioController::class, 'destroy'])
-    ->name('horario.destroy');
+Route::get('hora', [\App\Http\Controllers\HoraController::class, 'index'])
+    ->name('hora.index');
+Route::patch('hora/{id_hora}', [\App\Http\Controllers\HoraController::class, 'edit'])
+    ->name('hora.edit');
+Route::patch('hora/{id_hora}', [\App\Http\Controllers\HoraController::class, 'update'])
+    ->name('hora.update');
+Route::post('hora', [\App\Http\Controllers\HoraController::class, 'store'])
+    ->name('hora.store');
+Route::delete('hora/{id_hora}', [\App\Http\Controllers\HoraController::class, 'destroy'])
+    ->name('hora.destroy');
 
 Route::get('diahora', [\App\Http\Controllers\DiaHoraController::class, 'index'])
     ->name('diahora.index');

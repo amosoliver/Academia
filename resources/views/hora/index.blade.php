@@ -2,42 +2,42 @@
 
 <h1>{{ $title }}</h1>
 
-<li><a href="{{ route('horario.index') }}">{{ $title }}</a></li>
+<li><a href="{{ route('hora.index') }}">{{ $title }}</a></li>
 
 @section('main')
     <div class="box">
         <div class="box-header with-border">
-            <h1 class="box-title">{{ isset($edithorario) ? 'Editar' : 'Adicionar' }} horario de cumprimento do servidor</h1>
-            @isset($edithorario)
+            <h1 class="box-title">{{ isset($edithora) ? 'Editar' : 'Adicionar' }} hora de cumprimento do servidor</h1>
+            @isset($edithora)
                 <div class="box-tools">
-                    <a href="{{ route('horario.index') }}" class="btn btn-box-tool">VOLTAR</a>
+                    <a href="{{ route('hora.index') }}" class="btn btn-box-tool">VOLTAR</a>
                 </div>
             @endisset
         </div>
-        @isset($edithorario)
-            {{ Form::model($edithorario, ['method' => 'PATCH', 'route' => ['horario.update', $edithorario->id_horario]]) }}
+        @isset($edithora)
+            {{ Form::model($edithora, ['method' => 'PATCH', 'route' => ['hora.update', $edithora->id_hora]]) }}
         @else
-            {{ Form::open(['method' => 'POST', 'route' => 'horario.store']) }}
+            {{ Form::open(['method' => 'POST', 'route' => 'hora.store']) }}
         @endisset
         <div class="box-body">
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
                         {{ Form::label('hora_inicio', 'hora_inicio', ['class' => 'control-label col-md-3 col-lg-2']) }}
-                        {{ Form::text('hora_inicio', null, ['class' => 'form-control horario']) }}
+                        {{ Form::text('hora_inicio', null, ['class' => 'form-control hora']) }}
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         {{ Form::label('hora_fim', 'hora_fim', ['class' => 'control-label col-md-3 col-lg-2']) }}
-                        {{ Form::text('hora_fim', null, ['class' => 'form-control horario']) }}
+                        {{ Form::text('hora_fim', null, ['class' => 'form-control hora']) }}
                     </div>
                 </div>
             </div>
         </div>
         <div class="box-footer">
-            <button type="submit" class="btn btn-primary" title="Adicionar horario">
-                {{ isset($edithorario) ? 'SALVAR ALTERAÇÕES' : 'ADICIONAR' }}
+            <button type="submit" class="btn btn-primary" title="Adicionar hora">
+                {{ isset($edithora) ? 'SALVAR ALTERAÇÕES' : 'ADICIONAR' }}
             </button>
         </div>
         {{ Form::close() }}
@@ -53,17 +53,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($horarios as $horario)
+                    @forelse($horas as $hora)
                         <tr>
-                            <td>{{ $horario->hora_inicio }}</td>
-                            <td>{{ $horario->hora_fim }}</td>
+                            <td>{{ $hora->hora_inicio }}</td>
+                            <td>{{ $hora->hora_fim }}</td>
                             <td>
-                                <a href="?edit={{ $horario->id_horario }}" title="Editar horario"
+                                <a href="?edit={{ $hora->id_hora }}" title="Editar hora"
                                     class="btn btn-xs btn-primary">EDITAR</a>
                             </td>
                             <td>
-                                @if ($horario)
-                                    {{ Form::open(['method' => 'DELETE', 'route' => ['horario.destroy', $horario->id_horario], 'style' => 'display:inline']) }}
+                                @if ($hora)
+                                    {{ Form::open(['method' => 'DELETE', 'route' => ['hora.destroy', $hora->id_hora], 'style' => 'display:inline']) }}
                                         <button type="submit" title="Excluir percentual" class="btn btn-danger btn-confirm btn-xs">EXCLUIR</button>
                                     {{ Form::close() }}
                                 @endif

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dia extends Model
 {
-    protected $primaryKey = 'id_horario';
+    protected $primaryKey = 'id_dia';
 
     public function diaHora()
     {
