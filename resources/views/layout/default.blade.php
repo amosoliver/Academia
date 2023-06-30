@@ -33,7 +33,7 @@
         }
     </style>
 </head>
-<body>
+<body class="d-flex">
 
     @if(session('success'))
     <div class="alert alert-success col-md-3">
@@ -48,8 +48,8 @@
     </div>
 @endif
     @include('layout.sidebar')
-        <main>
-            <div class="container col-md-6">
+        <main class="flex-grow-1">
+            <div class="container col-md-8">
                 @yield('main')
             </div>
         </main>
