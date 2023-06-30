@@ -47,11 +47,11 @@
         {{ session('error') }}
     </div>
 @endif
+    @include('layout.sidebar')
         <main>
-            <div class="container justify-">
+            <div class="container col-md-6">
                 @yield('main')
             </div>
         </main>
-    </div>
 </body>
 </html>
