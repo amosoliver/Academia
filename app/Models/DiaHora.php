@@ -19,4 +19,17 @@ class DiaHora extends Model
     {
         return $this->belongsTo(Hora::class, 'id_hora');
     }
+
+    public function selectList()
+    {
+        $horas = $this->join('dias', 'diashoras.id_dia', '=', 'dias.id_dia')->
+        join('horas', 'diashoras.id_hora', '=', 'horas.id_hora')->get();
+        $arr = [];
+
+
+    }
+
+
+
+
 }
