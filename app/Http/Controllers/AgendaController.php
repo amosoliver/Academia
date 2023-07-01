@@ -74,10 +74,14 @@ class AgendaController extends Controller
 
     public function update(Request $req, $id_agenda)
     {
+        $data = Carbon::createFromFormat('d/m/Y', $req->input('data'))->format('Y-m-d');
+
         try {
             $agenda = $this->agenda->find($id_agenda);
-            $agenda->nome = $req->input('nome');
-
+            $agenda->data = $data;
+            $agenda->id_aluno = $req->input('id_aluno');
+            $agenda->id_dia_hora = $req->input('id_dia_hora');
+            $agenda->id_status = $req->input('id_status');
             if ($agenda->save()) {
                 return redirect()->route('agenda.index')->with('success', 'agenda editado com sucesso!');
             }
@@ -86,20 +90,5 @@ class AgendaController extends Controller
         }
 
         return redirect()->back()->with('error', 'Ocorreu um erro ao editar o agenda.');
-    }
-
-    public function destroy($id_agenda)
-    {
-        try {
-            $agenda = $this->agenda->find($id_agenda);
-
-            if ($agenda->delete()) {
-                return redirect()->route('agenda.index')->with('sucess', 'agenda excluido com sucesso!');
-            }
-        } catch (\Exception $ex) {
-            return redirect()->back()->with('error', 'Ocorreu um erro ao excluir o agenda: ' . $ex->getMessage());
-        }
-
-        return redirect()->back()->with('error', 'Ocorreu um erro ao excluir o agenda.');
     }
 }
