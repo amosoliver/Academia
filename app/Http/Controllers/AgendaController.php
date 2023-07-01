@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\DiaHora;
 use App\Models\Agenda;
 use App\Models\Status;
@@ -8,6 +9,7 @@ use App\Models\Instrutor;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Carbon;
 
 class AgendaController extends Controller
 {
@@ -39,21 +41,20 @@ class AgendaController extends Controller
         $v['title'] = 'Cadastrar agenda';
         $v['alunos'] = $this->aluno->selectList();
         $v['status'] = $this->status->selectList();
-        $v['diahoras'] =$this->diahora->selectList();
+        $v['diahoras'] = $this->diahora->selectList();
 
         return response()->view('agenda.create', $v);
     }
 
     public function store(Request $req)
     {
-
+        $data = Carbon::createFromFormat('d/m/Y', $req->input('data'))->format('Y-m-d');
         try {
             $agenda = $this->agenda->newInstance();
-            $agenda->nome = $req->input('nome');
-            $agenda->cpf = $req->input('cpf');
-            $agenda->email = $req->input('email');
-            $agenda->dt_nascimento = $req->input('dt_nascimento');
-            $agenda->id_instrutor = $req->input('id_instrutor');
+            $agenda->data = $data;
+            $agenda->id_aluno = $req->input('id_aluno');
+            $agenda->id_dia_hora = $req->input('id_dia_hora');
+            $agenda->id_status = $req->input('id_status');
             if ($agenda->save()) {
                 return redirect()->route('agenda.index')->with('success', 'agenda registrado com sucesso!');
             }
