@@ -14,11 +14,11 @@ class DiasTableSeeder extends Seeder
     public function run(): void
     {
         $diasSemana = [
-            'Segunda-feira',
-            'Terça-feira',
-            'Quarta-feira',
-            'Quinta-feira',
-            'Sexta-feira'
+            'Segunda',
+            'Terça',
+            'Quarta',
+            'Quinta',
+            'Sexta'
         ];
 
         foreach ($diasSemana as $dia) {

@@ -40,7 +40,6 @@ class AlunoController extends Controller
 
     public function store(Request $req)
     {
-
         try {
             $aluno = $this->aluno->newInstance();
             $aluno->nome = $req->input('nome');
@@ -48,8 +47,12 @@ class AlunoController extends Controller
             $aluno->email = $req->input('email');
             $aluno->dt_nascimento = $req->input('dt_nascimento');
             $aluno->id_instrutor = $req->input('id_instrutor');
+
             if ($aluno->save()) {
-                return redirect()->route('aluno.index')->with('success', 'Aluno registrado com sucesso!');
+                $aluno = $aluno->id_aluno; // Armazena o ID do aluno criado
+
+                // Redireciona para a rota 'agenda.createMany' com o ID do aluno como parâmetro
+                return redirect()->route('agenda.createMany', ['id_aluno' => $aluno])->with('success', 'Aluno registrado com sucesso!');
             }
         } catch (\Exception $ex) {
             return redirect()->back()->with('error', 'Ocorreu um erro ao registrar o aluno: ' . $ex->getMessage());
